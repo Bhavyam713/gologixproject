@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->String('name');
             $table->String('description');
             // $table->BLOB('image');
-         $table->unsignedBigInteger('category_id')->unsigned();
+         $table->unsignedBigInteger('category_id');
               $table->foreign('category_id')->references('id')-> on('categories')->onDelete('cascade');
           /*   $table->unsignedBigInteger('inventatory_id');
             $table->foreign('inventatory_id')

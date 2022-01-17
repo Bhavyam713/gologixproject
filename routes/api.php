@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\ProductController;
 
 
 
@@ -61,3 +62,10 @@ Route::post("addaddress/{id}", 'App\Http\Controllers\ApiController@addaddress');
 
 Route::get('getaddresses/{id}','App\Http\Controllers\ApiController@getaddress');
 
+// Get api to get all the products
+Route::get("getproduct",'App\Http\Controllers\ProductController@getproduct');
+// Post api to add products to database using cat_id
+Route::post("addproduct/{id}",'App\Http\Controllers\ProductController@addproduct');
+
+//get api to get product by giving category id
+Route::get('getproductbycategory/{id}','App\Http\Controllers\ProductController@getproductbycategory');
