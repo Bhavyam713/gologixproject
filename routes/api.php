@@ -47,7 +47,7 @@ Route::post("adduser", 'App\Http\Controllers\ApiController@adddata');
 
 
 //PUT API to update data into database
-Route::put("updateuser",'App\Http\Controllers\ApiController@updatedata');
+Route::put("updateuser/{id}",'App\Http\Controllers\ApiController@updatedata');
 
 
 //DELETE API to delete data from database single user

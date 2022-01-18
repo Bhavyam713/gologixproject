@@ -261,17 +261,31 @@ class ApiController extends Controller
 
 
        
-    public function updatedata(Request $req)
+    public function updatedata($id,Request $req)
     {
        if($req->isMethod('put'))
-       {
-        $userdata=$req->input();
+      {
+        // $userdata=$req->input();
         // User::where('id',$userdata['id'])->Update(['name'=>$userdata['name'],'email'=>$userdata['email'],'password'=>$userdata['password']]);
 
-        User::where('id',$req->id)->Update(['name'=>$req->name,'email'=>$req->email,'password'=>$req->password]);
-       
-       return response()->json(["message"=>"Updated successfully"]);
-       }
+       // $updated= User::where('id',$req->id)->Update(['name'=>$req->name,'email'=>$req->email,'password'=>$req->password,'phonenum'=>$req->phonenum]);
+       $updated=User::find($id);
+       $updated->name=$req->name;
+       $updated->email=$req->email;
+       $updated->password=$req->password;
+       $updated->phonenum=$req->phonenum;
+       $updated->push();
+
+
+       if($updated) 
+        {
+         return response()->json(["message"=>" User details Updated successfully"]);
+        }
+       else
+        {
+          return response()->json(["message"=>" User details  failed to Update"]);
+        }
+      }
     } 
 
 
